@@ -4,7 +4,7 @@ FROM python:3.9
 # Set environment variables for the PostgreSQL connection
 ENV POSTGRES_HOST=localhost
 ENV POSTGRES_PORT=5432
-ENV POSTGRES_USER=root
+ENV POSTGRES_USER=postgres
 ENV POSTGRES_PASSWORD=password
 ENV POSTGRES_DB=paisa-space-app
 
