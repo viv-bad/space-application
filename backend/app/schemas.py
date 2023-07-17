@@ -20,3 +20,29 @@ class Login(BaseModel):
 class Token(BaseModel):
     access_token: str
     token_type: str
+
+class AstronautBase(BaseModel):
+    name: str
+    # email: str
+
+class AstronautCreate(BaseModel):
+    name: str
+    # email: str
+    mission: str
+
+    class Config:
+        orm_mode = True
+
+class AstronautUpdate(BaseModel):
+    name: str
+    # email: str
+    mission: str
+
+    class Config:
+        orm_mode = True
+
+class Astronaut(AstronautBase):
+    id: int
+
+    class Config:
+        orm_mode = True
