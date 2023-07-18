@@ -2,11 +2,11 @@
 
 ## Assign Missions to Astronauts
 
-### Backend
+### Backend
 
-## Models
+#### Models
 
-- First, I would need to create a ''Mission' model which would look something like this:
+- First, I would need to create a ''Mission' model which would have just an id, and a name of mission:
 
   ```
   class Mission(Base):
@@ -27,11 +27,13 @@
     id = Column(Integer, primary_key=True, index=True)
     name = Column(String, nullable=False)
     email = Column(String, nullable=False)
+    mission_id = .....ForeignKey
+    mission = relationship("Mission", back_populates="{astronaut key in mission model}")
 
 
   ```
 
-- Adding foreign key relationships between the two models:
+- Adding foreign key relationships between the two models would therefore look something like this:
 
   - ```
     assigned_astronauts = relationship("Astronaut", back_populates="mission")
@@ -69,32 +71,10 @@
   id: int
   mission: Mission
 
-        class Config:
-            orm_mode = True
 
   ```
 
-  ```
-    class AstronautUpdate(AstronautBase):
-        pass
-
-
-    class AstronautInDB(Astronaut):
-        hashed_password: str
-
-
-    class MissionWithAstronauts(Mission):
-        assigned_astronauts: list[Astronaut] = []
-
-        class Config:
-            orm_mode = True
-
-
-    class AstronautWithMission(Astronaut):
-        mission: Mission
-  ```
-
-### Endpoints
+#### Endpoints
 
 - I then need a new endpoint `/missions/assign`, which will take in the astronaut id and the mission id as parameters.
 - I'll then need to update the mission_id of the corresponding astronaut with the assigned mission_id in the params.

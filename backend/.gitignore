@@ -1,2 +1,7 @@
 .venv
 config.ini
+config.py
+config-sample.ini
+Makefile
+Dockerfile
+.env
