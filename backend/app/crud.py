@@ -16,8 +16,19 @@ def create_user(db: Session, user: UserCreate):
 def get_user_by_email(db: Session, email: str):
     return db.query(models.User).filter(models.User.email == email).first()
 
-def create_astronaut(db: Session, astronaut: models.Astronaut):
-    db_astronaut = models.Astronaut(**astronaut.dict())
+# def create_astronaut(db: Session, astronaut: models.Astronaut):
+#     db_astronaut = models.Astronaut(**astronaut.dict())
+#     db.add(db_astronaut)
+#     db.commit()
+#     db.refresh(db_astronaut)
+#     return db_astronaut
+
+def create_astronaut(db: Session, astronaut: schemas.AstronautCreate):
+    db_astronaut = models.Astronaut(
+        name=astronaut.name,
+        email=astronaut.email,
+        mission=astronaut.mission
+    )
     db.add(db_astronaut)
     db.commit()
     db.refresh(db_astronaut)

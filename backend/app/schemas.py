@@ -25,6 +25,7 @@ class Token(BaseModel):
 class AstronautBase(BaseModel):
     name: str
     # email: str
+    mission: str
 
 class AstronautCreate(BaseModel):
     name: str

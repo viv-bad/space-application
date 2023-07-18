@@ -13,6 +13,9 @@ const NavBar = () => {
           Astronaut Manager App
         </Typography>
         <Button color="inherit">
+          <Link to="/home">Home</Link>
+        </Button>
+        <Button color="inherit">
           <Link to="/login">Login</Link>
         </Button>
         <Button color="inherit">

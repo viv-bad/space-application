@@ -40,7 +40,7 @@ def login_user(login: schemas.Login, db: Session = Depends(get_db)):
 
 
 @router.get("/astronauts", response_model=list[schemas.Astronaut])
-def get_astronauts(db: Session = Depends(get_db)):
+async def get_astronauts(db: Session = Depends(get_db)):
     return crud.get_astronauts(db)
 
 

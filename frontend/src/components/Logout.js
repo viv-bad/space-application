@@ -8,7 +8,8 @@ const Logout = () => {
   const handleLogout = () => {
     // Perform logout logic here (e.g., clear session, remove tokens, etc.)
     // Clear user authentication information from localStorage
-    localStorage.removeItem("token"); // Remove the authentication token or any other relevant data
+    // localStorage.removeItem("token"); // Remove the authentication token or any other relevant data
+    localStorage.setItem("authenticated", false);
 
     // Redirect to the login page
     navigate("/login");

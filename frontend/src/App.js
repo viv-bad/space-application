@@ -7,6 +7,7 @@ import NavBar from "./components/NavBar";
 import HomePage from "./pages/HomePage";
 import PrivateRoute from "./components/PrivateRoute";
 import Logout from "./components/Logout";
+import EditAstronaut from "./pages/EditAstronaut";
 
 const App = () => {
   return (
@@ -19,6 +20,7 @@ const App = () => {
         <Route path="/logout" element={<Logout />} />
         {/* private route */}
         <Route path="/home" element={<PrivateRoute component={HomePage} />} />
+        <Route path="/edit-astronaut/:id" element={<EditAstronaut />} />
       </Routes>
     </BrowserRouter>
   );

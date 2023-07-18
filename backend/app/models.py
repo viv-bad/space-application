@@ -18,3 +18,6 @@ class Astronaut(Base):
     name = Column(String, nullable=False)
     # email = Column(String, nullable=False)
     mission = Column(String, nullable=False)
+
+    class Config:
+        orm_mode = True
