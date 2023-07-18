@@ -4,6 +4,32 @@
 
 The objective of the Paisa Space Application is to develop a FullStack application for internal use by a space agency. The application aims to manage missions and optimize the performance of astronauts.
 
+Sure! Here's a template in Markdown for setting up a project with React, FastAPI, and PostgreSQL:
+
+# Project Setup Guide
+
+This guide will walk you through the steps to set up the project.
+
+## Step 1: Setting up the Backend (FastAPI)
+
+1. First, cd into the `backend` project directory (`cd backend/`)
+2. Initialize a new Python virtual environment: `python -m venv env`
+3. Activate the virtual environment:
+   - On Windows: `.\env\Scripts\activate`
+   - On macOS/Linux: `source env/bin/activate`
+4. Install FastAPI and other dependencies: `pip install -r requirements.txt`
+5. In the `congif-sample.init` file, change the DATABASE_URI to `postgresql://postgres:password@127.0.0.1:5432/paisa_space_app`
+6. Test your FastAPI backend by running `uvicorn main:app --reload`.
+
+## Step 2: Setting up the Frontend (React)
+
+1. Open a new terminal or command prompt.
+2. cd into `frontend/`
+3. run `npm install` to install the dependencies
+4. run `yarn start` or `npm start` to start the frontend
+
+## Outline of project
+
 ### Frontend
 
 The frontend of the application will allow astronauts to:
