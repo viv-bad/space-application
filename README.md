@@ -10,16 +10,34 @@ Sure! Here's a template in Markdown for setting up a project with React, FastAPI
 
 This guide will walk you through the steps to set up the project.
 
+`git clone https://github.com/viv-bad/space-application.git`
+
+## Optional Docker (not consistently working)
+
+1. First, run `cd space-application` then go into the `backend` project directory (`cd backend/`)
+2. Initialize a new Python virtual environment: `python -m venv .venv`
+3. Activate the virtual environment:
+   - On Windows: `.\.venv\Scripts\activate`
+   - On macOS/Linux: `source .venv/bin/activate`
+   - Open your docker application and cd into backend via `cd space-project` then `cd backend`.
+
+`docker build -t paisa-space-app .`
+`docker run -p 8000:8000 -d paisa-space-app`
+
+If above doesn't work, you may have to manually install some dependencies (see below).
+
 ## Step 1: Setting up the Backend (FastAPI)
 
-1. First, cd into the `backend` project directory (`cd backend/`)
-2. Initialize a new Python virtual environment: `python -m .venv venv`
+1. First, run `cd space-application` then go into the `backend` project directory (`cd backend/`)
+2. Initialize a new Python virtual environment: `python -m venv .venv`
 3. Activate the virtual environment:
    - On Windows: `.\.venv\Scripts\activate`
    - On macOS/Linux: `source .venv/bin/activate`
 4. Install FastAPI and other dependencies: `pip install -r requirements.txt`
-5. In the `config-sample.init` file, change the DATABASE_URI to `postgresql://postgres:password@127.0.0.1:5432/paisa_space_app`
-6. Test your FastAPI backend by running `uvicorn main:app --reload`.
+5. Then also manually run `pip install fastapi uvicorn sqlalchemy psycopg2` and any other dependencies that may be missing.
+6. In the `config-sample.ini` file, ensure the DATABASE_URI is `postgresql://postgres:password@127.0.0.1:5432/paisa_space_app`
+7. Test your FastAPI backend by running `uvicorn app.main:app --reload`.
+8. Your backend should now be running.
 
 ## Step 2: Setting up the Frontend (React)
 
@@ -27,12 +45,18 @@ This guide will walk you through the steps to set up the project.
 2. cd into `frontend/`
 3. run `npm install` to install the dependencies
 4. run `yarn start` or `npm start` to start the frontend
+5. The application should now be running on `http://localhost:3000`
+
+## Logging in to the app:
+
+Email: admin@gmail.com
+Password: admin
 
 ## Outline of project
 
 ### Frontend
 
-The frontend of the application will allow astronauts to:
+The frontend of the application allows astronauts to:
 
 - Login
 - View their assigned missions
@@ -40,36 +64,26 @@ The frontend of the application will allow astronauts to:
 
 ### Backend
 
-The backend of the application will:
+The backend of the application allows:
 
-- Handle user authentication
-- Manage data storage
-- Create RESTful APIs for seamless communication between the backend and the frontend
-
-### Other
-
-Additional requirements for the application include:
-
-- Having a visually appealing and modern user interface (UI)
-- Assigning specific missions to astronauts
-- Performing unit testing
-- Thoroughly documenting the application
-- Implementing a CI/CD workflow with continuous integration, automated testing, and cloud deployment
+- User authentication
+- Management of data storage
+- RESTful APIs for seamless communication between the backend and the frontend
 
 ## Tasks
 
 ### 1. Frontend
 
-The frontend tasks include:
+The frontend has:
 
-- Creating a login page with the following fields:
+- Alogin page with the following fields:
 
   - Email
   - Password
   - Sign-in button
-  - Display an error if any field is empty
+  - Displays an error if any field is empty
 
-- Creating a registration page for the 'admin' user with the following fields:
+- A registration page for the 'admin' user with the following fields:
 
   - Name
   - Email
@@ -78,61 +92,12 @@ The frontend tasks include:
   - Register button
   - Display an error if any field is empty or if the passwords don't match
 
-- Creating a home page where users can manage astronauts:
-  - Display a HTML table with the columns Name, Email, and Actions
-  - The table should show the registered "astronaut" users
-  - Provide buttons for editing and deleting each user in the Actions column
+- A home page where users can manage astronauts:
+  - A table with the columns Name, Email, and Actions
+  - Editing and deleting each astronaut in the Actions column
 
-### 2. Backend
+# Screenshots
 
-The backend tasks include:
-
-Implementing registration and login for the 'admin' using JWT for authentication:
-
-- Creating routes in the backend for registration and login
-- Storing the name, email, and password of the 'admin' user in the database during registration
-- Verifying the entered email and password during login and returning a valid JWT token
-
-Implementing CRUD (Create, Read, Update, Delete) for "astronauts" users:
-
-- Creating routes in the backend for each CRUD operation
-- Using PostgreSQL as the database to store "astronauts" user data
-- Implementing the necessary queries using Sequelize (Node.js) or SQLAlchemy (Python) to interact with the database
-
-Creating a RESTful API using Express (Node.js) or FastAPI (Python) with the following operations:
-
-- GET all registered "astronauts" users
-- GET an astronaut by ID
-- POST - Create a new astronaut
-- Update the data of an existing astronaut
-- Delete an existing astronaut
-
-### 3. Extra points
-
-The following additional tasks will earn extra points:
-
-Designing a modern UI using React/Next.js, TailwindCSS, and MUI or Bootstrap:
-
-- Using TailWind to build the interface
-- Utilizing MUI or Bootstrap for additional UI components
-
-Adding functionality to assign missions to astronauts:
-
-- Creating a page where missions can be assigned to users (form: mission: string, mission ID: number, assign to: astronaut)
-- Displaying user missions
-
-Writing unit tests for at least one critical function or component in the project:
-
-- Using Jest or Pytest for unit testing
-
-Documentation:
-
-- Thoroughly documenting the application to ensure clarity and ease of understanding
-
-CI/CD using GitHub Actions or Jenkins:
-
-- Implementing a CI/CD workflow for continuous integration, automated testing, and deployment
-
-Deploying to a cloud service like Heroku, AWS, GCP, or Azure:
-
-- Deploying the application to a cloud service for accessibility and scalability
+!['main-table'](assets/main-table.png)
+!['edit-page'](assets/edit-page.png)
+!['create-page.png](assets/create-page.png)

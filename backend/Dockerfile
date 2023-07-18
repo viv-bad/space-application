@@ -2,11 +2,11 @@
 FROM python:3.9
 
 # Set environment variables for the PostgreSQL connection
-ENV POSTGRES_HOST=<host>
+ENV POSTGRES_HOST=127.0.0.1
 ENV POSTGRES_PORT=5432
-ENV POSTGRES_USER=<user>
-ENV POSTGRES_PASSWORD=<password>
-ENV POSTGRES_DB=<database>
+ENV POSTGRES_USER=postgres
+ENV POSTGRES_PASSWORD=password
+ENV POSTGRES_DB=paisa-space-app
 
 # Set the working directory in the container
 WORKDIR /app
