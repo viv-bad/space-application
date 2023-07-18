@@ -66,7 +66,7 @@ const HomePage = () => {
             <TableCell>Astronaut ID</TableCell>
             <TableCell>Name</TableCell>
             <TableCell>Mission</TableCell>
-            {/* <TableCell>Email</TableCell> */}
+            <TableCell>Email</TableCell>
             <TableCell>Actions</TableCell>
           </TableRow>
         </TableHead>
@@ -76,7 +76,7 @@ const HomePage = () => {
               <TableCell>{astronaut.id}</TableCell>
               <TableCell>{astronaut.name}</TableCell>
               <TableCell>{astronaut.mission}</TableCell>
-              {/* <TableCell>{astronaut.email}</TableCell> */}
+              <TableCell>{astronaut.email}</TableCell>
               <TableCell>
                 <Button onClick={() => handleEdit(astronaut.id)}>Edit</Button>
                 <Button onClick={() => handleDelete(astronaut.id)}>

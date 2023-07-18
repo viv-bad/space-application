@@ -24,12 +24,12 @@ class Token(BaseModel):
 
 class AstronautBase(BaseModel):
     name: str
-    # email: str
+    email: str
     mission: str
 
 class AstronautCreate(BaseModel):
     name: str
-    # email: str
+    email: str
     mission: str
 
     class Config:
@@ -37,7 +37,7 @@ class AstronautCreate(BaseModel):
 
 class AstronautUpdate(BaseModel):
     name: str
-    # email: str
+    email: str
     mission: str
 
     class Config:

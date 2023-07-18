@@ -16,7 +16,7 @@ class Astronaut(Base):
 
     id = Column(Integer, primary_key=True, index=True)
     name = Column(String, nullable=False)
-    # email = Column(String, nullable=False)
+    email = Column(String, nullable=False)
     mission = Column(String, nullable=False)
 
     class Config:
