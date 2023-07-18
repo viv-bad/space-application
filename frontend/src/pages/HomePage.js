@@ -11,26 +11,6 @@ import Paper from "@mui/material/Paper";
 import Button from "@mui/material/Button";
 import Cookies from "js-cookie";
 
-// Define custom styles using makeStyles
-// const useStyles = makeStyles((theme) => ({
-//   container: {
-//     background: "#000000", // Background color
-//   },
-//   tableRow: {
-//     "&:nth-of-type(odd)": {
-//       background: "#1d1d1d", // Table row background color
-//     },
-//   },
-//   editButton: {
-//     background: "#3366ff", // Edit button background color
-//     color: "#ffffff", // Edit button text color
-//   },
-//   deleteButton: {
-//     background: "#ff3366", // Delete button background color
-//     color: "#ffffff", // Delete button text color
-//   },
-// }));
-
 const HomePage = () => {
   const [astronauts, setAstronauts] = useState([]);
   // console.log(!!localStorage.getItem("token"));
@@ -126,7 +106,7 @@ const HomePage = () => {
                 <Button
                   onClick={() => handleEdit(astronaut.id)}
                   sx={{
-                    background: "#3366ff",
+                    background: "#7094ff",
                     color: "#ffffff",
                     marginRight: "8px",
                   }}

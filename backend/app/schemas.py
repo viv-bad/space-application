@@ -13,7 +13,8 @@ class User(UserBase):
     id: int
 
     class Config:
-        orm_mode = True
+        # orm_mode = True
+        from_attributes = True
 
 class Login(BaseModel):
     email: str
@@ -34,7 +35,8 @@ class AstronautCreate(BaseModel):
     mission: str
 
     class Config:
-        orm_mode = True
+        # orm_mode = True
+        from_attributes = True
 
 class AstronautUpdate(BaseModel):
     name: str
@@ -42,10 +44,13 @@ class AstronautUpdate(BaseModel):
     mission: str
 
     class Config:
-        orm_mode = True
+        # orm_mode = True
+        from_attributes = True
 
 class Astronaut(AstronautBase):
     id: int
 
     class Config:
-        orm_mode = True
+        # orm_mode = True
+        from_attributes = True
+        

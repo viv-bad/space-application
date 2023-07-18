@@ -17,7 +17,7 @@ const theme = createTheme({
       main: "#345",
     },
     background: {
-      // default: "linear-gradient(to right, #333333, #cccccc)",
+      default: "linear-gradient(to right, #333333, #cccccc)",
     },
   },
 });
@@ -28,7 +28,6 @@ const App = () => {
       <BrowserRouter>
         <NavBar />
         <Routes>
-          {/* <Route path="/" element={<HomePage />} /> */}
           <Route path="/login" element={<LoginPage />} />
           <Route path="/register" element={<RegistrationPage />} />
           <Route path="/create-astronaut" element={<CreateAstronaut />} />

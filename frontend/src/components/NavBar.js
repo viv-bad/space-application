@@ -10,6 +10,7 @@ import LoginIcon from "@mui/icons-material/Login";
 import PersonAddAltIcon from "@mui/icons-material/PersonAddAlt";
 import Cookies from "js-cookie";
 import RocketLaunchIcon from "@mui/icons-material/RocketLaunch";
+import { Box } from "@mui/material";
 
 const NavBar = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -57,15 +58,39 @@ const NavBar = () => {
           </Button>
         ) : (
           <>
-            <Button color="inherit" component={Link} to="/home">
-              Home <HomeIcon />
-            </Button>
-            <Button color="inherit" component={Link} to="/create-astronaut">
-              Create Astronaut <PersonAddAltIcon />
-            </Button>
-            <Button color="inherit" component={Link} to="/logout">
-              Logout <LogoutIcon />
-            </Button>
+            <Box
+              sx={{
+                display: "flex",
+                // gap: "10px",
+                flexDirection: "row",
+                gap: "30px",
+              }}
+            >
+              <Button
+                color="inherit"
+                component={Link}
+                to="/home"
+                sx={{ display: "flex", gap: "5px" }}
+              >
+                <HomeIcon /> Home
+              </Button>
+              <Button
+                color="inherit"
+                component={Link}
+                to="/create-astronaut"
+                sx={{ display: "flex", gap: "5px" }}
+              >
+                <PersonAddAltIcon /> Create Astronaut
+              </Button>
+              <Button
+                color="inherit"
+                component={Link}
+                to="/logout"
+                sx={{ display: "flex", gap: "5px" }}
+              >
+                <LogoutIcon /> Logout
+              </Button>
+            </Box>
           </>
         )}
       </Toolbar>
