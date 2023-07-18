@@ -1,6 +1,9 @@
 from sqlalchemy import Column, Integer, String
 from database.database import Base
 
+# Make sure the classes here correspond to the db tables you defined in schemas.py.
+# Base = your instance of the base class to define the schema
+
 
 class User(Base):
     __tablename__ = "users"

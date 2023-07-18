@@ -9,7 +9,7 @@ const Logout = () => {
     // Perform logout logic here (e.g., clear session, remove tokens, etc.)
     // Clear user authentication information from localStorage
     // localStorage.removeItem("token"); // Remove the authentication token or any other relevant data
-    localStorage.setItem("authenticated", false);
+    localStorage.removeItem("token");
 
     // Redirect to the login page
     navigate("/login");

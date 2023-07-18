@@ -12,6 +12,7 @@ import Button from "@mui/material/Button";
 
 const HomePage = () => {
   const [astronauts, setAstronauts] = useState([]);
+  // console.log(!!localStorage.getItem("token"));
   const navigate = useNavigate();
   useEffect(() => {
     // Fetch the list of astronauts from the backend API
@@ -29,7 +30,7 @@ const HomePage = () => {
     // Handle edit action for astronaut with the given id
     const astronautToEdit = astronauts.find((astronaut) => astronaut.id === id);
     console.log("Edit astronaut with id:", id);
-    console.log(astronautToEdit);
+    // console.log(astronautToEdit);
     navigate(`/edit-astronaut/${id}`, { state: astronautToEdit });
   };
 
@@ -53,10 +54,10 @@ const HomePage = () => {
     }
 
     // Handle delete action for astronaut with the given id
-    console.log("Delete astronaut with id:", id);
+    // console.log("Delete astronaut with id:", id);
   };
 
-  console.log(astronauts);
+  // console.log(astronauts);
 
   return (
     <TableContainer component={Paper}>

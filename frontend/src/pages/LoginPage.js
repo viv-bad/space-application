@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import Box from "@mui/material/Box";
@@ -12,8 +13,12 @@ const LoginPage = () => {
   const [authenticated, setAuthenticated] = useState(false);
   const [error, setError] = useState("");
 
-  const navigate = useNavigate();
+  // setAuthenticated(!!localStorage.getItem("token"));
+  useEffect(() => {
+    setAuthenticated(!!localStorage.getItem("token"));
+  }, []);
 
+  const navigate = useNavigate();
   const handleLogin = (e) => {
     e.preventDefault();
 
@@ -26,11 +31,16 @@ const LoginPage = () => {
         .then((response) => {
           // Check the response status and perform actions accordingly
           if (response.status === 200) {
+            const { access_token } = response.data;
             // Successful login, redirect or perform other actions
-            // console.log("Login successful");
-            localStorage.setItem("authenticated", true);
+            // console.log(access_token);
+            localStorage.setItem("token", access_token);
             navigate("/home");
-            // setAuthenticated(true);
+            // console.log(authenticated);
+            // console.log(!!localStorage.getItem("token"));
+
+            // setAuthenticated(!!localStorage.getItem("token"));
+            // console.log(authenticated);
           } else {
             // Handle login error, display error message
             setError("Invalid email or password");
@@ -69,6 +79,12 @@ const LoginPage = () => {
       {error && <p>{error}</p>}
       <Button variant="contained" onClick={handleLogin}>
         Login
+      </Button>
+      {/* <Button variant="contained" onClick={() => navigate("/register")}>
+        Register
+      </Button> */}
+      <Button color="inherit" component={Link} to="/register">
+        Register
       </Button>
     </Box>
   );

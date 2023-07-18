@@ -1,5 +1,6 @@
 from pydantic import BaseModel
 
+# Define all constraints for the User and Astronaut tables in the DB
 class UserBase(BaseModel):
     name: str
     email: str

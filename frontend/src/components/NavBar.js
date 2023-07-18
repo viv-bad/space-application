@@ -1,5 +1,5 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { Link, useFetcher } from "react-router-dom";
 import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
@@ -10,24 +10,43 @@ import LoginIcon from "@mui/icons-material/Login";
 import HowToRegIcon from "@mui/icons-material/HowToReg";
 
 const NavBar = () => {
+  const [isAuthenticated, setIsAuthenticated] = useState(
+    !!localStorage.getItem("token")
+  );
+  useEffect(() => {
+    setIsAuthenticated(!!localStorage.getItem("token"));
+  }, []);
+  console.log(isAuthenticated);
+
   return (
     <AppBar position="static">
       <Toolbar>
         <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
           Astronaut Manager App
         </Typography>
-        <Button color="inherit" component={Link} to="/home">
-          <HomeIcon />
+        {!isAuthenticated ? (
+          <Button color="inherit" component={Link} to="/login">
+            Login <LoginIcon />
+          </Button>
+        ) : (
+          <>
+            <Button color="inherit" component={Link} to="/home">
+              Home <HomeIcon />
+            </Button>
+            <Button color="inherit" component={Link} to="/logout">
+              Logout <LogoutIcon />
+            </Button>
+          </>
+        )}
+        {/* <Button color="inherit" component={Link} to="/home">
+          Home <HomeIcon />
         </Button>
         <Button color="inherit" component={Link} to="/login">
-          <LoginIcon />
-        </Button>
-        <Button color="inherit" component={Link} to="/register">
-          <HowToRegIcon />
+          Login <LoginIcon />
         </Button>
         <Button color="inherit" component={Link} to="/logout">
-          <LogoutIcon />
-        </Button>
+          Logout <LogoutIcon />
+        </Button> */}
       </Toolbar>
     </AppBar>
   );
