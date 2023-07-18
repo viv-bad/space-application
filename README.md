@@ -31,10 +31,12 @@ If above doesn't work, you may have to manually install some dependencies (see b
 1. First, run `cd space-application` then go into the `backend` project directory (`cd backend/`)
 2. Initialize a new Python virtual environment: `python -m venv .venv`
 3. Activate the virtual environment:
+
    - On Windows: `.\.venv\Scripts\activate`
    - On macOS/Linux: `source .venv/bin/activate`
-4. Install FastAPI and other dependencies: `pip install -r requirements.txt`
-5. Then also manually run `pip install fastapi uvicorn sqlalchemy psycopg2` and any other dependencies that may be missing.
+
+4. first run `pip install --upgrade pip`, then Install FastAPI and other dependencies: `pip install -r requirements.txt`
+5. You may have to also manually run `pip install fastapi uvicorn sqlalchemy psycopg2-binary` and any other dependencies that may be missing.
 6. In the `config-sample.ini` file, ensure the DATABASE_URI is `postgresql://postgres:password@127.0.0.1:5432/paisa_space_app`
 7. Test your FastAPI backend by running `uvicorn app.main:app --reload`.
 8. Your backend should now be running.
