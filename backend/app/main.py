@@ -63,10 +63,11 @@ app.include_router(routes.router)
 # def delete_astronaut(astronaut_id: int, db: Session = Depends(get_db)):
 #     return crud.delete_astronaut(db, astronaut_id)
 
-# @app.exception_handler(HTTPException)
-# async def http_exception_handler(request, exc):
-#     return JSONResponse(status_code=exc.status_code, content={"detail": exc.detail})
+@app.exception_handler(HTTPException)
+async def http_exception_handler(request, exc):
+    return JSONResponse(status_code=exc.status_code, content={"detail": exc.detail})
 
-# @app.exception_handler(Exception)
-# async def generic_exception_handler(request, exc):
-#     return JSONResponse(status_code=500, content={"detail": "Internal server error"})
+
+@app.exception_handler(Exception)
+async def generic_exception_handler(request, exc):
+    return JSONResponse(status_code=500, content={"detail": "Internal server error"})

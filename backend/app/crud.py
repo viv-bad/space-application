@@ -1,9 +1,11 @@
+from fastapi import FastAPI, Depends, HTTPException
 from sqlalchemy.orm import Session
 from app.models import User
 from app.schemas import UserCreate
 from database.database import get_db
 from app import models, schemas
 from app.auth import hash_password
+
 
 def create_user(db: Session, user: UserCreate):
     hashed_password = hash_password(user.password)
@@ -42,8 +44,8 @@ def get_astronaut(db: Session, astronaut_id: int):
 
 def update_astronaut(db: Session, astronaut_id: int, astronaut: schemas.AstronautUpdate):
     db_astronaut = db.query(models.Astronaut).filter(models.Astronaut.id == astronaut_id).first()
-    # if not db_astronaut:
-    #     raise HTTPException(status_code=404, detail="Astronaut not found")
+    if not db_astronaut:
+        raise HTTPException(status_code=404, detail="Astronaut not found")
     if db_astronaut:        
       for field, value in astronaut.dict().items():
           setattr(db_astronaut, field, value)

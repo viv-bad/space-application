@@ -11,6 +11,26 @@ import Paper from "@mui/material/Paper";
 import Button from "@mui/material/Button";
 import Cookies from "js-cookie";
 
+// Define custom styles using makeStyles
+// const useStyles = makeStyles((theme) => ({
+//   container: {
+//     background: "#000000", // Background color
+//   },
+//   tableRow: {
+//     "&:nth-of-type(odd)": {
+//       background: "#1d1d1d", // Table row background color
+//     },
+//   },
+//   editButton: {
+//     background: "#3366ff", // Edit button background color
+//     color: "#ffffff", // Edit button text color
+//   },
+//   deleteButton: {
+//     background: "#ff3366", // Delete button background color
+//     color: "#ffffff", // Delete button text color
+//   },
+// }));
+
 const HomePage = () => {
   const [astronauts, setAstronauts] = useState([]);
   // console.log(!!localStorage.getItem("token"));
@@ -65,27 +85,61 @@ const HomePage = () => {
   // console.log(astronauts);
 
   return (
-    <TableContainer component={Paper}>
-      <Table>
+    <TableContainer
+      component={Paper}
+      sx={{
+        background: "linear-gradient(to right, #000000, #999999)",
+        borderBottomLeftRadius: "10px",
+        borderBottomRightRadius: "10px",
+      }}
+    >
+      <Table sx={{ marginTop: "0px", marginBottom: "0px" }}>
         <TableHead>
-          <TableRow>
-            <TableCell>Astronaut ID</TableCell>
-            <TableCell>Name</TableCell>
-            <TableCell>Mission</TableCell>
-            <TableCell>Email</TableCell>
-            <TableCell>Actions</TableCell>
+          <TableRow sx={{ background: "#1d1d1d", cursor: "pointer" }}>
+            <TableCell sx={{ color: "#ffffff", cursor: "pointer" }}>
+              Astronaut ID
+            </TableCell>
+            <TableCell sx={{ color: "#ffffff", cursor: "pointer" }}>
+              Name
+            </TableCell>
+            <TableCell sx={{ color: "#ffffff", cursor: "pointer" }}>
+              Mission
+            </TableCell>
+            <TableCell sx={{ color: "#ffffff", cursor: "pointer" }}>
+              Email
+            </TableCell>
+            <TableCell sx={{ color: "#ffffff" }}>Actions</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
           {astronauts.map((astronaut) => (
-            <TableRow key={astronaut.id}>
-              <TableCell>{astronaut.id}</TableCell>
-              <TableCell>{astronaut.name}</TableCell>
-              <TableCell>{astronaut.mission}</TableCell>
-              <TableCell>{astronaut.email}</TableCell>
+            <TableRow
+              sx={{ "&:hover": { background: "#999999", cursor: "pointer" } }}
+            >
+              <TableCell sx={{ color: "#ffffff" }}>{astronaut.id}</TableCell>
+              <TableCell sx={{ color: "#ffffff" }}>{astronaut.name}</TableCell>
+              <TableCell sx={{ color: "#ffffff" }}>
+                {astronaut.mission}
+              </TableCell>
+              <TableCell sx={{ color: "#ffffff" }}>{astronaut.email}</TableCell>
               <TableCell>
-                <Button onClick={() => handleEdit(astronaut.id)}>Edit</Button>
-                <Button onClick={() => handleDelete(astronaut.id)}>
+                <Button
+                  onClick={() => handleEdit(astronaut.id)}
+                  sx={{
+                    background: "#3366ff",
+                    color: "#ffffff",
+                    marginRight: "8px",
+                  }}
+                >
+                  Edit
+                </Button>
+                <Button
+                  onClick={() => handleDelete(astronaut.id)}
+                  sx={{
+                    background: "#ff3366",
+                    color: "#ffffff",
+                  }}
+                >
                   Delete
                 </Button>
               </TableCell>
