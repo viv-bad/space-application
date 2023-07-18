@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import Box from "@mui/material/Box";
@@ -10,7 +11,9 @@ const RegistrationPage = () => {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [error, setError] = useState("");
+  const [success, setSuccess] = useState("");
 
+  const navigate = useNavigate();
   const handleRegister = () => {
     if (
       name === "" ||
@@ -25,15 +28,17 @@ const RegistrationPage = () => {
       // Perform registration logic here
       // console.log(name, email, password, confirmPassword);
       axios
-        .post("http://localhost:8000/register", {
+        .post("http://127.0.0.1:8000/register", {
           name: name,
           email: email,
           password: password,
           confirmPassword: confirmPassword,
         })
         .then((response) => {
-          if (response.status === 201) {
-            console.log("Registration successful");
+          if (response.status === 200) {
+            // console.log("Registration successful");
+            setSuccess("Registration successful. Go to the login page!");
+            // navigate("/login");
           } else {
             setError("Error registering user");
           }
@@ -79,6 +84,7 @@ const RegistrationPage = () => {
         value={confirmPassword}
         onChange={(e) => setConfirmPassword(e.target.value)}
       />
+      {success && <p>{success}</p>}
       {error && <p>{error}</p>}
       <Button variant="contained" onClick={handleRegister}>
         Register

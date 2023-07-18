@@ -1,22 +1,56 @@
-import { Button } from "@mui/material";
-import React from "react";
+import {
+  Button,
+  Dialog,
+  DialogActions,
+  DialogContent,
+  DialogContentText,
+  DialogTitle,
+} from "@mui/material";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import Cookies from "js-cookie";
 
 const Logout = () => {
   const navigate = useNavigate();
+  const [open, setOpen] = useState(false);
 
   const handleLogout = () => {
     // Perform logout logic here (e.g., clear session, remove tokens, etc.)
-    // Clear user authentication information from localStorage
-    // localStorage.removeItem("token"); // Remove the authentication token or any other relevant data
-    localStorage.removeItem("token");
+    Cookies.remove("token");
 
     // Redirect to the login page
     navigate("/login");
   };
 
+  const handleClose = () => {
+    setOpen(false);
+  };
+
+  const handleOpen = () => {
+    setOpen(true);
+  };
+
   return (
-    <button onClick={handleLogout}>Are you sure you want to logout?</button>
+    <>
+      <Button
+        sx={{ mx: "auto", display: "block", color: "red" }}
+        onClick={handleOpen}
+      >
+        Click here to logout!
+      </Button>
+      <Dialog open={open} onClose={handleClose}>
+        <DialogTitle>Logout Confirmation</DialogTitle>
+        <DialogContent>
+          <DialogContentText>
+            Are you sure you want to logout?
+          </DialogContentText>
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={handleLogout}>Yes</Button>
+          <Button onClick={handleClose}>No</Button>
+        </DialogActions>
+      </Dialog>
+    </>
   );
 };
 

@@ -9,6 +9,7 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import Button from "@mui/material/Button";
+import Cookies from "js-cookie";
 
 const HomePage = () => {
   const [astronauts, setAstronauts] = useState([]);
@@ -17,7 +18,11 @@ const HomePage = () => {
   useEffect(() => {
     // Fetch the list of astronauts from the backend API
     axios
-      .get("http://localhost:8000/astronauts")
+      .get("http://localhost:8000/astronauts", {
+        headers: {
+          Authorization: `Bearer ${Cookies.get("token")}`,
+        },
+      })
       .then((response) => {
         setAstronauts(response.data);
       })

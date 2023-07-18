@@ -6,7 +6,7 @@ import Box from "@mui/material/Box";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import PrivateRoute from "../components/PrivateRoute";
-
+import Cookies from "js-cookie";
 const LoginPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -14,8 +14,12 @@ const LoginPage = () => {
   const [error, setError] = useState("");
 
   // setAuthenticated(!!localStorage.getItem("token"));
+  // useEffect(() => {
+  //   setAuthenticated(!!localStorage.getItem("token"));
+  // }, []);
+
   useEffect(() => {
-    setAuthenticated(!!localStorage.getItem("token"));
+    setAuthenticated(!!Cookies.get("token"));
   }, []);
 
   const navigate = useNavigate();
@@ -32,9 +36,11 @@ const LoginPage = () => {
           // Check the response status and perform actions accordingly
           if (response.status === 200) {
             const { access_token } = response.data;
-            // Successful login, redirect or perform other actions
-            // console.log(access_token);
-            localStorage.setItem("token", access_token);
+            // Successful login, redirect to home
+            Cookies.set("token", access_token);
+            setAuthenticated(true);
+
+            // localStorage.setItem("token", access_token);
             navigate("/home");
             // console.log(authenticated);
             // console.log(!!localStorage.getItem("token"));
