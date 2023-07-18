@@ -7,7 +7,7 @@ from configparser import ConfigParser
 
 def get_database_uri():
     config = ConfigParser()
-    config.read('config.ini')
+    config.read('config-sample.ini')
     return config.get('database', 'DATABASE_URI')
 
 
