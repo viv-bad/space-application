@@ -27,7 +27,7 @@ const EditAstronaut = () => {
     const updatedAstronaut = {
       id: astronautData.id,
       name,
-      // email,
+      email,
       mission,
     };
 
@@ -65,12 +65,12 @@ const EditAstronaut = () => {
           onChange={(e) => setName(e.target.value)}
           variant="outlined"
         />
-        {/* <TextField
+        <TextField
           label="Email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           variant="outlined"
-        /> */}
+        />
         <TextField
           label="Mission"
           value={mission}
