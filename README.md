@@ -4,7 +4,6 @@
 
 The objective of the Paisa Space Application is to develop a FullStack application for internal use by a space agency. The application aims to manage missions and optimize the performance of astronauts.
 
-Sure! Here's a template in Markdown for setting up a project with React, FastAPI, and PostgreSQL:
 
 # Project Setup Guide
 
