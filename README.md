@@ -13,12 +13,12 @@ This guide will walk you through the steps to set up the project.
 ## Step 1: Setting up the Backend (FastAPI)
 
 1. First, cd into the `backend` project directory (`cd backend/`)
-2. Initialize a new Python virtual environment: `python -m venv env`
+2. Initialize a new Python virtual environment: `python -m .venv venv`
 3. Activate the virtual environment:
-   - On Windows: `.\env\Scripts\activate`
-   - On macOS/Linux: `source env/bin/activate`
+   - On Windows: `.\.venv\Scripts\activate`
+   - On macOS/Linux: `source .venv/bin/activate`
 4. Install FastAPI and other dependencies: `pip install -r requirements.txt`
-5. In the `congif-sample.init` file, change the DATABASE_URI to `postgresql://postgres:password@127.0.0.1:5432/paisa_space_app`
+5. In the `config-sample.init` file, change the DATABASE_URI to `postgresql://postgres:password@127.0.0.1:5432/paisa_space_app`
 6. Test your FastAPI backend by running `uvicorn main:app --reload`.
 
 ## Step 2: Setting up the Frontend (React)
