@@ -8,21 +8,36 @@ import HomePage from "./pages/HomePage";
 import PrivateRoute from "./components/PrivateRoute";
 import Logout from "./components/Logout";
 import EditAstronaut from "./pages/EditAstronaut";
+import CreateAstronaut from "./pages/CreateAstronaut";
+import { ThemeProvider, createTheme } from "@mui/material/styles";
+
+const theme = createTheme({
+  palette: {
+    primary: {
+      main: "#345",
+    },
+    background: {
+      default: "linear-gradient(to right, #333333, #cccccc)",
+    },
+  },
+});
 
 const App = () => {
   return (
-    <BrowserRouter>
-      <NavBar />
-      <Routes>
-        {/* <Route path="/" element={<HomePage />} /> */}
-        <Route path="/login" element={<LoginPage />} />
-        <Route path="/register" element={<RegistrationPage />} />
-        <Route path="/logout" element={<Logout />} />
-        {/* private route */}
-        <Route path="/home" element={<PrivateRoute component={HomePage} />} />
-        <Route path="/edit-astronaut/:id" element={<EditAstronaut />} />
-      </Routes>
-    </BrowserRouter>
+    <ThemeProvider theme={theme}>
+      <BrowserRouter>
+        <NavBar />
+        <Routes>
+          <Route path="/login" element={<LoginPage />} />
+          <Route path="/register" element={<RegistrationPage />} />
+          <Route path="/create-astronaut" element={<CreateAstronaut />} />
+          <Route path="/logout" element={<Logout />} />
+          {/* private route */}
+          <Route path="/home" element={<PrivateRoute component={HomePage} />} />
+          <Route path="/edit-astronaut/:id" element={<EditAstronaut />} />
+        </Routes>
+      </BrowserRouter>
+    </ThemeProvider>
   );
 };
 

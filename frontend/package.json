@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@babel/preset-react": "^7.22.5",
     "@emotion/react": "^11.11.1",
     "@emotion/styled": "^11.11.0",
     "@mui/icons-material": "^5.14.0",
@@ -22,8 +23,13 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "test": "jest"
+  },
+  "jest": {
+    "transform": {
+      "^.+\\.[t|j]sx?$": "babel-jest"
+    }
   },
   "eslintConfig": {
     "extends": [
@@ -44,6 +50,9 @@
     ]
   },
   "devDependencies": {
+    "@babel/preset-env": "^7.22.9",
+    "babel-jest": "^29.6.1",
+    "jest": "^27.5.1",
     "tailwindcss": "^3.3.3"
   }
 }

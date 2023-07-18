@@ -49,7 +49,13 @@ const EditAstronaut = () => {
 
   return (
     <Box
-      sx={{ display: "flex", flexDirection: "column", alignItems: "center" }}
+      sx={{
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        justifyContent: "center",
+        height: "50vh",
+      }}
     >
       <Typography variant="h4" component="h2" mb={2}>
         Edit Astronaut

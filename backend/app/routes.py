@@ -3,7 +3,7 @@ from sqlalchemy.orm import Session
 from app import schemas, models, crud
 from database.database import get_db
 from app.auth import create_access_token, verify_password
-
+from fastapi.responses import JSONResponse
 
 router = APIRouter()
 
@@ -67,9 +67,14 @@ def delete_astronaut(astronaut_id: int, db: Session = Depends(get_db)):
     return crud.delete_astronaut(db, astronaut_id)
 
 
+# @router.post("/missions/assign")
+# def assign_mission():
+
+
 # @router.exception_handler(HTTPException)
 # async def http_exception_handler(request, exc):
 #     return JSONResponse(status_code=exc.status_code, content={"detail": exc.detail})
+
 
 # @router.exception_handler(Exception)
 # async def generic_exception_handler(request, exc):
